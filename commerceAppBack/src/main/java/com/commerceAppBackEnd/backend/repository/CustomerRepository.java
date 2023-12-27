@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CustomerRepository extends CrudRepository<Customer,Long> {
+public interface CustomerRepository extends CrudRepository<Customer, Long> {
     List<Customer> findAll();
 
     @Override
@@ -19,14 +19,12 @@ public interface CustomerRepository extends CrudRepository<Customer,Long> {
     @Override
     Optional<Customer> findById(Long id);
 
-    @Query("select c from customer c " +
-            "where lower(c.customerName) like lower(concat('%', :searchTerm, '%')) " +
-            "or lower(c.customerSurname) like lower(concat('%', :searchTerm, '%'))")
+    @Query("SELECT c FROM customer c " +
+            "WHERE LOWER(c.customerName) LIKE LOWER(CONCAT('%', :searchTerm, '%')) " +
+            "OR LOWER(c.customerSurname) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
     List<Customer> search(@Param("searchTerm") String searchTerm);
 
     void deleteById(Long id);
-    List<Customer> findByNameContainingIgnoreCase(String name);
 
-
+    List<Customer> findCustomerByCustomerNameContainingIgnoreCase(String name);
 }
-

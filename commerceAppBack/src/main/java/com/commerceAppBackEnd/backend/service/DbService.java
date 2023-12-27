@@ -81,16 +81,16 @@ public class DbService {
                 if (!customerRepository.existsById(id)) {
                     throw new CustomerNotFoundException();
                 }
-                orderRepository.deleteById(id);}
+                customerRepository.deleteById(id);}
 
-    public List<Customer> searchCustomersByName(String name) {
-        return customerRepository.findByNameContainingIgnoreCase(name);
+    public List<Customer> searchCustomersByName(String nameC) {
+        return customerRepository.findCustomerByCustomerNameContainingIgnoreCase(nameC);
     }
-    public List<Order> searchOrdersByName(String name) {
-        return orderRepository.findByNameContainingIgnoreCase(name);
+    public List<Order> searchOrdersByName(String nameO) {
+        return orderRepository.findByOrderNameContainingIgnoreCase(nameO);
     }
-    public List<Product> searchProductsByName(String name) {
-        return productRepository.findByNameContainingIgnoreCase(name);
+    public List<Product> searchProductsByName(String nameP) {
+        return productRepository.findByNameContainingIgnoreCase(nameP);
     }
 }
 

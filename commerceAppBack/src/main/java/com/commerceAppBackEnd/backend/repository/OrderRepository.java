@@ -23,5 +23,5 @@ public interface OrderRepository extends CrudRepository<Order,Long> {
 
     void deleteById(Long id);
 
-    List<Order> findByNameContainingIgnoreCase(String name);
+    List<Order> findByOrderNameContainingIgnoreCase(String name);
 }
